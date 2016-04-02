@@ -1,0 +1,7 @@
+*.o
+*.pyc
+green/be_source/backend
+green/be_source/backenddaemon
+green/be_source/xumain
+pyxi/be/backenderror
+pyxi/be/enf.enf
