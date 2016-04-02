@@ -38,7 +38,7 @@ struct  structcorecrumhedr {
                      *prevcrum;
                         /* doubly linked circular list of */
                         /*   all corecrums for grim reaping */
-        /*SINT*/unsigned char age;         /* for deciding to grimly reap */
+        /*SINT*/SINT age;         /* for deciding to grimly reap */
         struct structcorecrumhedr *leftbroorfather;
                 /* if it is NULL then this is fullcrum */
                 /* father if leftmost, else leftbro */
@@ -62,7 +62,7 @@ struct structcuc {
                      *prevcrum;
                         /* doubly linked circular list of */
                         /*   all corecrums for grim reaping */
-        /*SINT*/unsigned char age;         /* for deciding to grimly reap */
+        /*SINT*/SINT age;         /* for deciding to grimly reap */
         typecorecrum *leftbroorfather;
                 /* if it is NULL then this is fullcrum */
                 /* father if leftmost, else leftbro */
@@ -93,7 +93,7 @@ struct structcbc {
                      *prevcrum;
                         /* doubly linked circular list of */
                         /*   all corecrums for grim reaping */
-        /*SINT*/unsigned char age;         /* for deciding to grimly reap */
+        /*SINT*/SINT age;         /* for deciding to grimly reap */
         typecorecrum *leftbroorfather;
                 /* if it is NULL then this is fullcrum */
                 /* father if leftmost, else leftbro */
@@ -117,7 +117,7 @@ struct struct2dcbc {
                      *prevcrum;
                         /* doubly linked circular list of */
                         /*   all corecrums for grim reaping */
-        /*SINT*/unsigned char age;         /* for deciding to grimly reap */
+        /*SINT*/SINT age;         /* for deciding to grimly reap */
         typecorecrum *leftbroorfather;
                 /* if it is NULL then this is fullcrum */
                 /* father if leftmost, else leftbro */

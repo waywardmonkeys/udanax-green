@@ -40,7 +40,7 @@ onlinklist (taskptr, linksetptr, linkisaptr)
                 return;
         }
 
-        for (temp = *linksetptr; nextlink = temp->next; temp = nextlink) {
+        for (temp = *linksetptr; (nextlink = temp->next); temp = nextlink) {
                 if (tumblereq (&temp->address, linkisaptr))
                         return;
         }

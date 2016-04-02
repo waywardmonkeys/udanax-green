@@ -38,7 +38,7 @@ contextfree (context)
 {
   typecontext *c;
 
-	for (; c = context; ) {
+	for (; (c = context); ) {
 		if (c->contexttype == GRAN){
 			--contextnum;
 		}else{
@@ -72,7 +72,7 @@ crumcontextfree (context)
 {
   typecrumcontext *c;
 
-	for (;c=context; context = context->nextcrumcontext,efree((char*)c)) {
+	for (;(c=context); context = context->nextcrumcontext,efree((char*)c)) {
 		rejuvinate ((typecorecrum*)c->corecrum);
 		--crumcontextnum;
 	}
@@ -94,23 +94,23 @@ incontextlistnd (clistptr, c, index)
 	if (!clist) {
 /*if (debug) fprintf (stderr, "first insertion\n");*/
 		*clistptr = c;
-		return;
+		return 0;
 	}
 				/* on beginning */
 	if (whereoncontext (clist, &grasp.dsas[index], index) < THRUME) {
 /*if (debug) fprintf (stderr, "beginning\n");  */
 		c->nextcontext = clist;
 		*clistptr = c;
-		return;
+		return 0;
 	} else {
-		for (; nextc = clist->nextcontext; clist = nextc) {
+		for (; (nextc = clist->nextcontext); clist = nextc) {
 				/* in middle */
 			if ((whereoncontext (clist, &grasp.dsas[index], index) > ONMYLEFTBORDER)
 			    && (whereoncontext (nextc, &grasp.dsas[index], index) < ONMYLEFTBORDER)) {
 /*if (debug) fprintf (stderr, "middle\n"); */
 				c->nextcontext = nextc;
 				clist->nextcontext = c;
-				return;
+				return 0;
 		       }
 		}
 	}

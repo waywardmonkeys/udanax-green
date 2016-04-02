@@ -549,6 +549,7 @@ onitemlist (taskptr, itemptr, itemsetptr)
   typeitemset *itemsetptr;
 {
   typeitem *temp, *newitem;
+  INT *taskalloc();
 /*foo("entering onitemlist\n");*/
 #ifndef DISTRIBUTION
 	if (!itemsetptr)

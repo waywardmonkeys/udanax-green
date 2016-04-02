@@ -38,7 +38,7 @@ main ()
   void exit();
   bool establishprotocol();
   char buf[100];
-  FILE *fd;
+  /*FILE *fd;*/
   struct tm *local;
   long clock;
 
@@ -47,15 +47,15 @@ main ()
 
 	clock = time (0);
 	local = localtime (&clock);
-	sprintf(buf,"ln%d.%d.%d:%d",local->tm_mon+1,local->tm_mday,local->tm_hour,local->tm_min);
+	snprintf(buf,100,"ln%d.%d.%d:%d",local->tm_mon+1,local->tm_mday,local->tm_hour,local->tm_min);
 /*
 #ifndef DISTRIBUTION
-	sprintf(buf,"febe%d.%d.%d:%d",local->tm_mon+1,local->tm_mday,local->tm_hour,local->tm_min);
+	snprintf(buf,100,"febe%d.%d.%d:%d",local->tm_mon+1,local->tm_mday,local->tm_hour,local->tm_min);
 	febelog = fopen(buf, "w");
 #endif
 */
 
-	freopen ("backenderror", "w", stderr);		/* CHANGE THIS ?? */
+	(void)freopen ("backenderror", "w", stderr);		/* CHANGE THIS ?? */
 	setbuf(stderr,NULL);
 	processrcfile();
 

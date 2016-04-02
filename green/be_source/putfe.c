@@ -13,11 +13,11 @@
 #include "xanadu.h"
 #include "requests.h"
 
-FILE *logfile;
-FILE *nulllog;
-FILE *reallog;
+extern FILE *logfile;
+extern FILE *nulllog;
+extern FILE *reallog;
 
-FILE *febelog = NULL;
+extern FILE *febelog = NULL;
 bool firstputforrequest;
 
 #define WORDELIM '~'

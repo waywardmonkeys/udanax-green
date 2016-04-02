@@ -403,7 +403,7 @@ deletefromfreediskstructures(diskentry)
 		}
 		oldptr = ptr;
 	}
-	if (oldptr = 0) {
+	if (oldptr == 0) {/*zzzroger aug 2003 this was = can't have been right */
 		fdorderedtable[temp] = newptr->next;
 	} else {
 		oldptr->next = newptr->next;

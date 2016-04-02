@@ -9,9 +9,9 @@
 #include "crum.h"
 #include "reap.h"
 
-long noishouldbother = 0;
-long notakenephewnd = 0;
-long noeatbrosnd = 0;
+INT noishouldbother = 0;
+INT notakenephewnd = 0;
+INT noeatbrosnd = 0;
 
 recombine (father)
   typecuc *father;
@@ -40,10 +40,10 @@ recombineseq (father) /** zzz reg 1999 this recombines too much */
 	if(!roomformoresons(father)){
 		return;
 	}
-        for (ptr = (typecuc *)getleftson (father); ptr; ptr = (typecuc *)macrogetrightbro ((typecorecrum *)ptr)){
+        for (ptr = (typecuc *)getleftson (father); ptr; ptr = (typecuc *)macrogetrightbro (/*zzz wtf reg 11052006(typecorecrum *)*/ptr)){
                 recombineseq (ptr);
 	}
-        for(ptr=(typecuc *)getleftson(father);ptr&&ptr->rightbro;ptr=(typecuc *)macrogetrightbro((typecorecrum *)ptr)){
+        for(ptr=(typecuc *)getleftson(father);ptr&&ptr->rightbro;ptr=(typecuc *)macrogetrightbro(/*(typecorecrum *)*/ptr)){
                 if (ptr->age == RESERVED)
                         continue;
                 if (ptr->leftson && roomformoresons (ptr)) {

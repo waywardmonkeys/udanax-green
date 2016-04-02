@@ -103,7 +103,7 @@ typedef union unionuberrawdiskloaf{
 	char	     rawdiskloaf[NUMBYTESINLOAF];
 } typeuberrawdiskloaf;
 
-#define MAXTHINGIESINLOAF   9/*((1024-sizeof(struct structdiskloafhedr))/sizeof(struct structduc)) // change these numbers //*/
+#define MAXTHINGIESINLOAF   9/*((1024-sizeof(struct structdiskloafhedr))/sizeof(struct structduc))*/ // change these numbers //
 
 #define NUMLOAFSOFBITMAP 50
 #define BITMAPSIZE (NUMBYTESINLOAF*NUMLOAFSOFBITMAP-(sizeof(unsigned)+sizeof(bool)))

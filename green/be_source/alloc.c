@@ -38,7 +38,7 @@ checkalloc(c)
 
 
 if(!flag){
-	return;
+	return 0;
 }
 	if(debug && *c){
 		fprintf(stderr,"%s",c);

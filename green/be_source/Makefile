@@ -1,6 +1,6 @@
 CC = cc                         # select gcc if you like
 
-CFLAGS = -pg -g
+CFLAGS = -pg -ggdb -Wall
 #CFLAGS = -w
 # CFLAGS = -cckr                # use this line for Irix
 
@@ -59,7 +59,7 @@ backenddaemon: $(HINCLUDES) port.h $(COMMONOBJECTS) \
 	chmod +w backenddaemon
 
 lint: $(HINCLUDES) be.c get1fe.c get2fe.c putfe.c $(COMMONCSOURCES)
-	lint -hbxa be.c get1fe.c get2fe.c putfe.c $(COMMONCSOURCES) >zzlintout
+	splint -weak  +ignoresigns -unrecog  -longunsignedunsignedintegral -longint -nestcomment +longintegral  -warnposix   be.c get1fe.c get2fe.c putfe.c $(COMMONCSOURCES) >zzlintout
 	cp zzlintout zzlintsave
 
 bedlint: $(HINCLUDES) port.h bed.c socketbe.c get1fe.c get2fe.c \

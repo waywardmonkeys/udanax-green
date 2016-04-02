@@ -13,3 +13,4 @@
 #define OLD 1           /* set this as you wish, age */
                         /*  up to it from NEW */
 #endif
+void reap();

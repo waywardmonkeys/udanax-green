@@ -8,14 +8,12 @@
 */
 #include "crum.h"
 #include "coredisk.h"
-
+#include "functiondefinitions.h"
 extern bool isxumain;
 static hgetwiddsp();
 static varunpackloaf();
 /* Initialize thing from old enf.enf */
-void initkluge(granfptr, spanfptr)
-  typecuc **granfptr;
-  typecuc **spanfptr;
+void initkluge(typecuc **granfptr, typecuc **spanfptr)/*function_edfinition*/
 {
   typecbc *tempcbc;
 	
@@ -40,28 +38,22 @@ void initkluge(granfptr, spanfptr)
 	freecrum((typecorecrum*)tempcbc);
 }
 
-  typediskloaf*
-lookinsideloaffor(insidenumber,uloafptr)
-  INT insidenumber;
-  typediskloaf *uloafptr;
-{
+  typediskloaf* lookinsideloaffor(INT insidenumber, typediskloaf *uloafptr) /*function_edfinition*/{
 	return(uloafptr);
 }
 
-  static
-unpackloaf (insidediskblocknumber,uloafptr, father)
+  static unpackloaf (insidediskblocknumber,uloafptr, father)
   INT insidediskblocknumber;
   typediskloaf *uloafptr;
   typecuc *father;
 {
 	varunpackloaf (insidediskblocknumber,uloafptr, father);
-	return;
+	return 0;
 }
 /*#define hgetfromloaf(ip,lp) (*(ip)=intof(lp),fprintf(stderr,"hgetfromloaf gets %d\n",*(ip)),(lp)=((char*)lp)+lengthof(lp))*/
 
 
-  static
-varunpackloaf (insidediskblocknumber,uloafptr, father)
+  static varunpackloaf (insidediskblocknumber,uloafptr, father)
   INT insidediskblocknumber;
   typediskloaf *uloafptr;
   typecuc *father;
@@ -111,7 +103,7 @@ dumphexstuff(xloafptr);
 	}
 #ifdef glurg
 	father->modified = FALSE;
-#endif glurg
+#endif 
 	hgetfromloaf(&enftype,loafp);
 
 	if (enftype != father->cenftype) {
@@ -160,8 +152,7 @@ dumphexstuff(xloafptr);
 	}
 }
 
-inloaf (father)
-  typecuc *father;
+void inloaf ( typecuc *father)/*function_definition*/
 {
   typediskloaf loaf;
 	if (father->height == 0)
@@ -180,14 +171,11 @@ inloaf (father)
 	unpackloaf (father->sonorigin.insidediskblocknumber,&loaf, father);
 /*nchecknumofsons(father);*/
 }
-inorgl (granorglptr)
-  typecbc *granorglptr;
+void inorgl ( typecbc *granorglptr)/*function_definition*/
 {
 	inorglinternal(granorglptr,(typeuberrawdiskloaf*)NULL);
 }
-inorglinternal (granorglptr,crumptr)
-  typecbc *granorglptr;
-  typeuberrawdiskloaf *crumptr;
+void inorglinternal ( typecbc *granorglptr, typeuberrawdiskloaf *crumptr)/*function_definition*/
 {
   typediskloaf loaf;
   typecuc *ptr;
@@ -245,8 +233,7 @@ inorglinternal (granorglptr,crumptr)
 /*dump(ptr);*/
 }
 
-  static
-hgetwiddsp(ptr,loafptrptr)
+  static hgetwiddsp(ptr,loafptrptr)
   typecuc *ptr;
   char **loafptrptr;
 {
@@ -266,9 +253,7 @@ hgetwiddsp(ptr,loafptrptr)
 	}
 }
 
-hgetinfo(ptr,loafptrptr)/*this assumes ptr crum is ok except for info*/
-  typecbc *ptr;
-  char **loafptrptr;
+void hgetinfo(typecbc *ptr, char **loafptrptr)/*this assumes ptr crum is ok except for info*//*function_definition*/
 {
   unsigned INT temp;
 	if (!is2dcrum((typecorecrum*)ptr)) {
@@ -279,7 +264,7 @@ hgetinfo(ptr,loafptrptr)/*this assumes ptr crum is ok except for info*/
 			(*loafptrptr) += lengthof((humber)*loafptrptr);
 			movmem((*loafptrptr),ptr->cinfo.granstuff.textstuff.textstring,ptr->cinfo.granstuff.textstuff.textlength);
 			(*loafptrptr) += ptr->cinfo.granstuff.textstuff.textlength;
-			return;
+			return ;
 		}else if(ptr->cinfo.infotype == GRANORGL){
 			ptr->cinfo.granstuff.orglstuff.diskorglptr.diskblocknumber = intof((humber)*loafptrptr);
 /*			if(temp == 0 || temp == -1){
@@ -290,9 +275,9 @@ hgetinfo(ptr,loafptrptr)/*this assumes ptr crum is ok except for info*/
 			(*loafptrptr) += lengthof((humber)*loafptrptr);
 			ptr->cinfo.granstuff.orglstuff.diskorglptr.insidediskblocknumber = intof((humber)*loafptrptr);
 			(*loafptrptr) += lengthof((humber)*loafptrptr);
-			return;
+			return ;
 		}else{
-			return;
+			return ;
 		}
 	}else{
 		if(ptr ->height){

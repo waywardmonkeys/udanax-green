@@ -175,6 +175,7 @@ void readloaf (loafptr, diskptr)
 }
 
 
+  bool goodblock();
 void actuallyreadrawloaf(loafptr, blocknumber)
   typeuberrawdiskloaf *loafptr;
   INT blocknumber;

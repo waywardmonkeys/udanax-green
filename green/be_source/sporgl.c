@@ -97,7 +97,7 @@ link2sporglset (taskptr, linkisa, sporglsetptr, whichend,type)
 	tumblerclear (&zero);
 	tumblerincrement (&zero, 0, whichend, &vspan.stream);
 	tumblerincrement (&zero, 0/*1*/, 1, &vspan.width);
-	if (context = retrieverestricted((typecuc*)orgl, &vspan ,V, (typespan*)NULL, I, (typeisa*)NULL)) {
+	if ((context = retrieverestricted((typecuc*)orgl, &vspan ,V, (typespan*)NULL, I, (typeisa*)NULL))) {
 		for (c = context; c; c = c->nextcontext) {
 			sporglptr = (typesporgl *)taskalloc(taskptr,sizeof (typesporgl));
 			contextintosporgl ((type2dcontext*)c, (tumbler*)NULL, sporglptr, I);

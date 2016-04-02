@@ -255,7 +255,7 @@ findcbcnd (father, offsetptr, address, index)
         if (father->height != 0) {
                 prologuend (father, offsetptr, &grasp, (typedsp*)NULL);
                 for (ptr = findleftson ((typecuc*)father); ptr; ptr = getrightbro (ptr))
-                        if (retr = findcbcnd (ptr, &grasp, address, index))
+                        if ((retr = findcbcnd (ptr, &grasp, address, index)))/*zzz reg 2003 aug should this be == i think not */
                                 break;
         } else { /* FOUND IT! */
                 retr = makecontextfromcbc ((typecbc*)father, offsetptr);

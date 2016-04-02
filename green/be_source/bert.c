@@ -110,7 +110,7 @@ logbertmodified(tp, connection)
 		bert =(bertentry *) p->stuff;
 		if (bert->connection == connection && tumblereq(tp, &bert->documentid)) {
 			bert->modified = TRUE;
-			return;
+			return 0 ;
 		}
 	}
 }
@@ -232,12 +232,12 @@ fprintf(stderr,"exitbert:  user = %d\n", connection);
 				temp = berttable[i];
 				berttable[i] = berttable[i]->next;
 				efree((char *)temp);
-				return;
+				return 0;
 			} else {
 				temp = oldptr->next;
 				oldptr->next = p->next;
 				efree((char *)temp);
-				return;
+				return 0;
 			}
 		}
 		oldptr = p;

@@ -18,13 +18,13 @@
 #define VSPECFLAG 'v'
 #define TEXTFLAG 't'
 
-FILE *logfile;
-FILE *nulllog;
-FILE *reallog;
+extern FILE *logfile;
+extern FILE *nulllog;
+extern FILE *reallog;
 
 extern bool logstuff;
-FILE *interfaceinput;
-FILE *febelog;
+extern FILE *interfaceinput;
+extern FILE *febelog;
 
 pushc (taskptr, c)
   typetask *taskptr;
@@ -43,6 +43,7 @@ pullc (taskptr)
   typetask *taskptr;
 {
   INT temp;
+  INT temp2;
 
 	if (taskptr->charinbuff) {
 		taskptr->charinbuff = FALSE;
@@ -56,9 +57,9 @@ pullc (taskptr)
 			diskexit (); // try to avoid screwing enf.enf //
 			gerror("pullc");*/
 		}
-		temp &= 0x7f;
+		temp2 = temp & 0x7f;
 		if (logstuff && interfaceinput && interfaceinput != nulllog) {
-			if (temp == WORDELIM)
+			if (temp2 == WORDELIM)
 				putc ('\n', interfaceinput);
 			else
 				putc (temp, interfaceinput);
@@ -358,7 +359,7 @@ bool flag;
 */
 	num = 0;
 	flag = FALSE;
-	while (c = pullc (taskptr)){
+	while ((c = pullc (taskptr))){
 		fprintf (logfile, "%c",c);
 		if (!isdigit(c))
 			break;

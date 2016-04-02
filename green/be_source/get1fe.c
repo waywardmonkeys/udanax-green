@@ -12,11 +12,11 @@
 
 #include "xanadu.h"
 #include "requests.h"
-FILE *logfile;
-FILE *nulllog;
-FILE *reallog;
+extern FILE *logfile;
+extern FILE *nulllog;
+extern FILE *reallog;
 extern bool logstuff;
-FILE *interfaceinput;
+extern FILE *interfaceinput;
 
   bool
 getinsert (taskptr, docisaptr, vsaptr, textsetptr)

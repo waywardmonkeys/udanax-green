@@ -11,7 +11,7 @@
 #include "crum.h"
 
 #ifndef RESERVED
-#define RESERVED -1 /*in this file, this is used to flag calls from coredisk*/
+#define RESERVED 0xff /*in this file, this is used to flag calls from coredisk*/
 #endif
 
 bool isxumain;
@@ -53,7 +53,7 @@ getrightmostbro(ptr)
 {
   typecorecrum *p;
 
-	while (p = getrightbro(ptr))
+	while ((p = getrightbro(ptr)))
 		ptr = p;
 	return (ptr);
 }
@@ -78,7 +78,7 @@ getleftmostbro(ptr)
 {
   typecorecrum *p;
 
-	while (p = getleftbro(ptr))
+	while ((p = getleftbro(ptr)))
 		ptr = p;
 	return (ptr);
 }
@@ -162,7 +162,7 @@ findfather(son)
 {
   typecuc *ptr;
 
-	  if (ptr = weakfindfather(son))
+	  if ((ptr = weakfindfather(son)))
 		rejuvinateifnotRESERVED((typecorecrum *)ptr);
 	  return(ptr);
 }

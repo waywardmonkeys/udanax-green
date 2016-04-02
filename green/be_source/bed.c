@@ -16,7 +16,7 @@ extern int backenddaemon;	/* backend version */
 #include <sys/time.h> /* includes <time.h>*/
 #ifndef sun
 #include <time.h>
-#endif sun
+#endif /*sun*/
 #include "xanadu.h"
 #include "requests.h"
 #include "players.h"
@@ -36,8 +36,8 @@ bool isxumain = FALSE;
 char outputbuffer[BUFSIZ];
 char inputbuffer[BUFSIZ];
 bool logstuff;
-extern FILE *interfaceinput;
-extern FILE *febelog;
+ FILE *interfaceinput;
+ FILE *febelog;
 struct timeval timeout;
 INT main_socket;
 static tumbler currentaccount;

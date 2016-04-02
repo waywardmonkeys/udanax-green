@@ -346,7 +346,7 @@ dump(ptr);
 
 	ivemodified (ptr);
 	ivemodified(newuncle);
-	/*setwispsofsons(newuncle);// to fix makeroomonleftnd//*/
+	/*setwispsofsons(newuncle);*/// to fix makeroomonleftnd//
 	setwispupwards((typecuc*)ptr,0);
 	setwispupwards((typecuc*)newuncle,0);
 	setwispupwards(father,1);

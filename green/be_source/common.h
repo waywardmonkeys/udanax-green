@@ -9,6 +9,7 @@
 
 
 /* common xanadu header file */
+#define DISTRIBUTION
 /*#include <assert.h>*/
 #include <stdio.h>
 #include <ctype.h>
@@ -23,9 +24,9 @@
 #ifndef min
 #define min(a,b)        (((a) < (b)) ? (a) : (b))
 #endif
+#define SIZEMULT 1
 
-
-#define XUBUFSIZ 1024
+#define XUBUFSIZ (1024*SIZEMULT)
 
 #ifdef sun
 #define BCOPYWORKS 1
@@ -109,7 +110,7 @@ typedef struct structcutseq {
         tumbler cutsarray[MAXCUTS];
 }typecutseq;
 
-#define GRANTEXTLENGTH  950 
+#define GRANTEXTLENGTH  (950 *SIZEMULT)
 
 INT debug;       
 

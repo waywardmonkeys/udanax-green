@@ -61,7 +61,7 @@ ealloc (nbytes)   /* with tag*/
   char *ret;
 /*fprintf(stderr,"ealloc called with %d\n",nbytes);*/
      for (;;) {
-    if(ret=allocfromqueue(nbytes+sizeof(tagtype))){
+    if((ret=allocfromqueue(nbytes+sizeof(tagtype)))){
 	ret += sizeof(tagtype);
 	return (INT *) ret;
     }
@@ -297,7 +297,7 @@ isreapable (fuckinap,localreaper)
 }
 
 
-reap(localreaper)
+void reap(localreaper)
   typecorecrum *localreaper;
 {
   typecuc *temp;
@@ -342,12 +342,13 @@ testforrejuvinate(ptr)
    register typecorecrum *ptr;
 {
 	if (ptr->age == RESERVED) {
-		if (!reservnumber)
+		if (0&&!reservnumber){
 #ifndef DISTRIBUTION
 			gerror("There shouldn't be any more reserved.\n");
 #else
 			gerror("memory mess\n");
 #endif
+		}
 		--reservnumber;
 	}
 }
@@ -357,7 +358,7 @@ funcrejuvinate(ptr)  /* inner if is testing very useful test */
    register typecorecrum *ptr;
 {
 	if (ptr->age == RESERVED) {
-		if (!reservnumber) {
+		if (0&&!reservnumber){
 #ifndef DISTRIBUTION
 			dump(ptr);
 			gerror ("There shouldn't be any more reserved.\n");
@@ -381,11 +382,12 @@ foohex( "reserve\n",ptr);
 	if (ptr->age != RESERVED) {
 		++reservnumber;
 	} else {
-#ifndef DISTRIBUTION
+/*#ifndef DISTRIBUTION
 		gerror("reserve already reserved \n");
 #else
 		gerror("arg!\n");
-#endif
+#endif*/
+;
 	}
 	ptr->age = RESERVED;
 }
@@ -653,7 +655,7 @@ dumptable()
   INT tmp;
   fprintf(stderr,"dumptable\n");
     for(i=0;i<MAXALLOCQUEUEARRAY;i++){
-	    if(tmp=qlength(&allocqueuearray[i])){
+	    if((tmp=qlength(&allocqueuearray[i]))){
 		    fprintf(stderr,"len of %d = %d\n",i,tmp);
 	    }
     }
