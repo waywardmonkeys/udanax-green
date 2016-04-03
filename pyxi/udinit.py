@@ -34,7 +34,7 @@ def main():
 #   port = 55146
 #   host = "localhost"
 #   xs = x88.tcpconnect(host,port)
-   status =	os.sytem("/usr/udanax/green/be_source/backend")
+   status =	os.system("/usr/udanax/green/be_source/backend")
    print "Content-type: text/html"
    print
    print "<TITLE> udanax initc!</TITLE>"
